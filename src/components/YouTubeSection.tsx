@@ -67,10 +67,16 @@ export const YouTubeSection: React.FC<YouTubeSectionProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-amber-900/30">
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold text-red-500 uppercase tracking-wider mb-2">
+            <a
+              href="https://www.youtube.com/channel/UCrcgWWGv5nrSeP2y79nt3GQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-semibold text-red-500 hover:text-red-400 uppercase tracking-wider mb-2"
+            >
               <Youtube className="w-4 h-4 fill-current" />
               <span>{lang === 'te' ? 'సద్గురునాటువైద్యం యూట్యూబ్ ఛానల్' : 'Sadguru Natu Vaidyam YouTube'}</span>
-            </div>
+              <ExternalLink className="w-3 h-3" />
+            </a>
             <h2 className="text-2xl sm:text-3xl font-bold font-serif text-amber-100">
               {t.videos.title}
             </h2>
@@ -79,7 +85,17 @@ export const YouTubeSection: React.FC<YouTubeSectionProps> = ({
             </p>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <a
+              href="https://www.youtube.com/channel/UCrcgWWGv5nrSeP2y79nt3GQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-[#1c100a] hover:bg-amber-950 text-amber-200 border border-amber-800/80 rounded-lg transition-colors whitespace-nowrap"
+            >
+              <Youtube className="w-4 h-4 text-red-500" />
+              <span>{lang === 'te' ? 'ఛానల్ చూడండి (YouTube)' : 'Visit YouTube Channel'}</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
             <button
               onClick={() => setIsAddModalOpen(true)}
               className="flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-red-600 hover:bg-red-500 text-white rounded-lg transition-colors shadow-md shadow-red-950/50 whitespace-nowrap"
@@ -194,6 +210,44 @@ export const YouTubeSection: React.FC<YouTubeSectionProps> = ({
             })}
           </div>
         )}
+
+        {/* More Videos / Go to YouTube Channel Bottom CTA */}
+        <div className="mt-10 pt-8 border-t border-amber-900/40 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-[#180d08] via-[#22110a] to-[#180d08] p-5 sm:p-6 rounded-2xl border border-red-900/40 shadow-xl">
+          <div className="flex items-center gap-3.5 text-center sm:text-left flex-col sm:flex-row">
+            <div className="w-12 h-12 rounded-xl bg-red-600/20 border border-red-500/40 flex items-center justify-center text-red-500 shrink-0">
+              <Youtube className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="text-base sm:text-lg font-bold font-serif text-amber-100">
+                {lang === 'te'
+                  ? 'మరిన్ని వీడియోల కోసం మా యూట్యూబ్ ఛానల్‌కి వెళ్ళండి'
+                  : 'Watch More Videos on Our Official YouTube Channel'}
+              </h3>
+              <p className="text-xs sm:text-sm text-amber-300/80 mt-0.5">
+                {lang === 'te'
+                  ? 'సద్గురు నాటు వైద్యం & శ్రీనివాస్ మహారాజ్ గారి అన్ని వీడియోలు చూడటానికి క్రింది బటన్ పై క్లిక్ చేయండి'
+                  : 'Click below to visit Sadguru Natu Vaidyam YouTube Channel for all herbal remedies & spiritual videos'}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0 w-full sm:w-auto">
+            <a
+              href="https://www.youtube.com/channel/UCrcgWWGv5nrSeP2y79nt3GQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-6 py-3.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-red-950/60 flex items-center justify-center gap-2.5 transition-all hover:scale-[1.02]"
+            >
+              <Youtube className="w-5 h-5" />
+              <span>
+                {lang === 'te'
+                  ? 'మరిన్ని వీడియోలు / ఛానల్‌కి వెళ్ళండి (More Videos · Go to Channel)'
+                  : 'More Videos / Go to Channel'}
+              </span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Video Player Modal */}

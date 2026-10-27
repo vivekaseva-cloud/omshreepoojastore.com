@@ -80,6 +80,7 @@ export interface TranslationDictionary {
     logoutBtn: string;
     tabs: {
       videos: string;
+      services: string;
       ads: string;
       googleAds: string;
       leads: string;
@@ -169,10 +170,11 @@ export const translations: Record<Language, TranslationDictionary> = {
       logoutBtn: 'లాగౌట్',
       tabs: {
         videos: 'వీడియోల నిర్వహణ',
+        services: 'సేవలు & పరిహారాలు (+/-)',
         ads: 'ప్రైవేట్ యాడ్స్ ఆమోదం',
         googleAds: 'గూగుల్ యాడ్స్',
         leads: 'వచ్చిన అభ్యర్థనలు',
-        bigrock: 'BigRock హోస్టింగ్ గైడ్',
+        bigrock: 'Hostinger / cPanel / BigRock',
       },
     },
   },
@@ -256,10 +258,11 @@ export const translations: Record<Language, TranslationDictionary> = {
       logoutBtn: 'Logout',
       tabs: {
         videos: 'Manage Videos',
+        services: 'Manage Services (+/-)',
         ads: 'Approve Pvt Ads',
         googleAds: 'Google Ads',
         leads: 'Inquiries',
-        bigrock: 'BigRock Hosting',
+        bigrock: 'Hostinger / cPanel / BigRock',
       },
     },
   },

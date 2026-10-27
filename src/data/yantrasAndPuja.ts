@@ -10,6 +10,51 @@ export interface YantraItem {
   blessingEn: string;
   tagTe: string;
   tagEn: string;
+  imageUrl?: string;
+}
+
+export function createYantraProduct(input: {
+  nameTe: string;
+  nameEn?: string;
+  purposeTe: string;
+  purposeEn?: string;
+  metalTe?: string;
+  metalEn?: string;
+  blessingTe?: string;
+  blessingEn?: string;
+  tagTe?: string;
+  tagEn?: string;
+  imageUrl?: string;
+}): YantraItem {
+  const cleanNameTe = input.nameTe.trim();
+  const cleanNameEn = (input.nameEn || input.nameTe).trim();
+  const cleanPurposeTe = input.purposeTe.trim();
+  const cleanPurposeEn = (input.purposeEn || input.purposeTe).trim();
+  const cleanMetalTe = (input.metalTe || 'స్వచ్ఛమైన రాగి & పూజా ద్రవ్యం').trim();
+  const cleanMetalEn = (input.metalEn || cleanMetalTe).trim();
+  const cleanBlessingTe = (input.blessingTe || 'శ్రీనివాస్ మహారాజ్ గారి స్వహస్తాల మంత్ర ప్రాణప్రతిష్ట.').trim();
+  const cleanBlessingEn = (input.blessingEn || cleanBlessingTe).trim();
+  const cleanTagTe = (input.tagTe || 'సిద్ధ యంత్రం / పూజా ద్రవ్యం').trim();
+  const cleanTagEn = (input.tagEn || cleanTagTe).trim();
+
+  return {
+    id: `yantra_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+    nameTe: cleanNameTe,
+    nameEn: cleanNameEn,
+    purposeTe: cleanPurposeTe,
+    purposeEn: cleanPurposeEn,
+    metalTe: cleanMetalTe,
+    metalEn: cleanMetalEn,
+    blessingTe: cleanBlessingTe,
+    blessingEn: cleanBlessingEn,
+    tagTe: cleanTagTe,
+    tagEn: cleanTagEn,
+    imageUrl: input.imageUrl?.trim() || '',
+  };
+}
+
+export function updateYantraImage(items: YantraItem[], id: string, imageUrl: string): YantraItem[] {
+  return items.map((item) => (item.id === id ? { ...item, imageUrl } : item));
 }
 
 export const yantrasCatalog: YantraItem[] = [
@@ -25,6 +70,7 @@ export const yantrasCatalog: YantraItem[] = [
     blessingEn: 'Energized with 1,08,000 Sri Sukta mantra recitations.',
     tagTe: 'అత్యంత విశిష్టమైనది',
     tagEn: 'Most Auspicious',
+    imageUrl: '',
   },
   {
     id: 'sarva-vashikaran-yantra',
@@ -38,6 +84,7 @@ export const yantrasCatalog: YantraItem[] = [
     blessingEn: 'Infused with Kamabija attraction mantra currents.',
     tagTe: 'శీఘ్ర దాంపత్య శాంతి',
     tagEn: 'Marital Harmony',
+    imageUrl: '',
   },
   {
     id: 'maha-sudarshana-raksha',
@@ -51,6 +98,7 @@ export const yantrasCatalog: YantraItem[] = [
     blessingEn: 'Energized directly during Sudarshana Maha Homa.',
     tagTe: 'శాశ్వత కవచం',
     tagEn: 'Lifetime Armor',
+    imageUrl: '',
   },
   {
     id: 'kuber-dhanakarshana',
@@ -64,6 +112,7 @@ export const yantrasCatalog: YantraItem[] = [
     blessingEn: 'Infused with Kubera Gayatri Mantras.',
     tagTe: 'వ్యాపార వృద్ధి',
     tagEn: 'Business Prosperity',
+    imageUrl: '',
   },
   {
     id: 'manglik-kuja-yantra',
@@ -77,6 +126,7 @@ export const yantrasCatalog: YantraItem[] = [
     blessingEn: 'Consecrated during Kuja Shanti rituals.',
     tagTe: 'శీఘ్ర వివాహం',
     tagEn: 'Early Matrimony',
+    imageUrl: '',
   },
   {
     id: 'original-rudraksha-puja',
@@ -90,5 +140,6 @@ export const yantrasCatalog: YantraItem[] = [
     blessingEn: 'Purified through Rudrabhisheka rituals.',
     tagTe: 'సంపూర్ణ సామాగ్రి',
     tagEn: 'Complete Samagri',
+    imageUrl: '',
   },
 ];

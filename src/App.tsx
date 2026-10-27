@@ -20,6 +20,12 @@ import { initialYouTubeVideos } from './data/initialVideos.ts';
 import { initialPrivateAds } from './data/initialAds.ts';
 import { YouTubeVideo, prependVideo } from './utils/youtube.ts';
 import { PrivateAd, GoogleAdsConfig } from './utils/ads.ts';
+import { SpiritualService, servicesData } from './data/services.ts';
+import {
+  addServiceToList,
+  removeServiceFromList,
+  resetServicesToDefault,
+} from './utils/serviceManagement.ts';
 import { Language } from './data/translations.ts';
 
 export default function App() {
@@ -71,6 +77,25 @@ export default function App() {
     }
   });
 
+  // Services State (Persistent, customizable by Admin)
+  const [services, setServices] = useState<SpiritualService[]>(() => {
+    try {
+      const v2 = localStorage.getItem('snv_services_v2');
+      if (v2) {
+        const parsed = JSON.parse(v2);
+        if (Array.isArray(parsed) && parsed.length >= 24) return parsed;
+      }
+      const saved = localStorage.getItem('snv_services_v1');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length >= 24) return parsed;
+      }
+      return servicesData;
+    } catch {
+      return servicesData;
+    }
+  });
+
   // Leads State
   const [leads, setLeads] = useState<ConsultationLead[]>(() => {
     try {
@@ -83,6 +108,7 @@ export default function App() {
 
   // Modals & Authentication
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [adminTab, setAdminTab] = useState<'videos' | 'services' | 'ads' | 'googleAds' | 'leads' | 'bigrock'>('videos');
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [isSubmitAdOpen, setIsSubmitAdOpen] = useState(false);
   const [selectedConsultProblem, setSelectedConsultProblem] = useState<string | undefined>();
@@ -96,6 +122,11 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('snv_videos', JSON.stringify(videos));
   }, [videos]);
+
+  useEffect(() => {
+    localStorage.setItem('snv_services_v2', JSON.stringify(services));
+    localStorage.setItem('snv_services_v1', JSON.stringify(services));
+  }, [services]);
 
   useEffect(() => {
     localStorage.setItem('snv_ads', JSON.stringify(ads));
@@ -130,6 +161,18 @@ export default function App() {
 
   const handleDeleteVideo = (videoId: string) => {
     setVideos((prev) => prev.filter((v) => v.id !== videoId));
+  };
+
+  const handleAddService = (newService: SpiritualService) => {
+    setServices((prev) => addServiceToList(prev, newService));
+  };
+
+  const handleDeleteService = (serviceId: string) => {
+    setServices((prev) => removeServiceFromList(prev, serviceId));
+  };
+
+  const handleResetServices = () => {
+    setServices(resetServicesToDefault());
   };
 
   const handleUserSubmitAd = (newAd: PrivateAd) => {
@@ -192,6 +235,12 @@ export default function App() {
         {/* Services & Remedies Catalog (18+ conditions) */}
         <ServicesSection
           lang={lang}
+          services={services}
+          isAdmin={isAdminAuthenticated}
+          onOpenAdminServices={() => {
+            setAdminTab('services');
+            setIsAdminOpen(true);
+          }}
           onSelectServiceForConsultation={handleSelectServiceForConsult}
         />
 
@@ -231,11 +280,16 @@ export default function App() {
         videos={videos}
         onAddVideo={handleAddVideo}
         onDeleteVideo={handleDeleteVideo}
+        services={services}
+        onAddService={handleAddService}
+        onDeleteService={handleDeleteService}
+        onResetServices={handleResetServices}
         ads={ads}
         onUpdateAds={setAds}
         googleAdsConfig={googleAdsConfig}
         onUpdateGoogleAds={setGoogleAdsConfig}
         leads={leads}
+        initialTab={adminTab}
       />
 
       {/* Submit Private Ad Modal for Public */}

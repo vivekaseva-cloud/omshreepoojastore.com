@@ -1,6 +1,7 @@
 /**
  * Private Ads & Google Ads Management Utilities
  */
+import { extractYouTubeId } from './youtube.ts';
 
 export interface PrivateAd {
   id: string;
@@ -10,6 +11,9 @@ export interface PrivateAd {
   contactNumber: string;
   city?: string;
   imageUrl?: string;
+  photos?: string[];
+  youtubeUrl?: string;
+  youtubeId?: string;
   targetLink?: string;
   status: 'approved' | 'pending' | 'rejected';
   submittedAt: number;
@@ -19,10 +23,10 @@ export interface PrivateAd {
 
 export interface GoogleAdsConfig {
   enabled: boolean;
-  clientScriptUrl?: string; // e.g. https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-...
-  adClient: string; // e.g. ca-pub-1234567890123456
-  adSlotBanner: string; // Slot ID for top/mid banners
-  customHtmlSnippet?: string; // Direct snippet pasted by user
+  clientScriptUrl?: string;
+  adClient: string;
+  adSlotBanner: string;
+  customHtmlSnippet?: string;
 }
 
 export function validatePrivateAdSubmission(ad: Partial<PrivateAd>): { isValid: boolean; error?: string } {
@@ -36,6 +40,12 @@ export function validatePrivateAdSubmission(ad: Partial<PrivateAd>): { isValid: 
   if (cleanPhone.length < 10) {
     return { isValid: false, error: 'చెల్లుబాటు అయ్యే 10 అంకెల ఫోన్ నంబర్ ఇవ్వండి / Enter valid 10-digit phone number' };
   }
+  if (ad.youtubeUrl && ad.youtubeUrl.trim().length > 0) {
+    const ytId = extractYouTubeId(ad.youtubeUrl.trim());
+    if (!ytId) {
+      return { isValid: false, error: 'చెల్లుబాటు అయ్యే యూట్యూబ్ లింక్ ఇవ్వండి / Please enter a valid YouTube link' };
+    }
+  }
   return { isValid: true };
 }
 
@@ -46,8 +56,15 @@ export function createPendingPrivateAd(data: {
   contactNumber: string;
   city?: string;
   imageUrl?: string;
+  photos?: string[];
+  youtubeUrl?: string;
   targetLink?: string;
+  status?: 'approved' | 'pending';
 }): PrivateAd {
+  const cleanPhotos = Array.isArray(data.photos) ? data.photos.filter(Boolean) : [];
+  const primaryImage = data.imageUrl?.trim() || cleanPhotos[0] || '';
+  const ytId = data.youtubeUrl ? extractYouTubeId(data.youtubeUrl.trim()) || '' : '';
+
   return {
     id: `ad_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
     title: data.title.trim(),
@@ -55,10 +72,14 @@ export function createPendingPrivateAd(data: {
     description: data.description.trim(),
     contactNumber: data.contactNumber.trim(),
     city: data.city?.trim() || '',
-    imageUrl: data.imageUrl?.trim() || '',
+    imageUrl: primaryImage,
+    photos: cleanPhotos.length > 0 ? cleanPhotos : (primaryImage ? [primaryImage] : []),
+    youtubeUrl: data.youtubeUrl?.trim() || '',
+    youtubeId: ytId,
     targetLink: data.targetLink?.trim() || '',
-    status: 'pending',
+    status: data.status || 'pending',
     submittedAt: Date.now(),
+    approvedAt: data.status === 'approved' ? Date.now() : undefined,
   };
 }
 

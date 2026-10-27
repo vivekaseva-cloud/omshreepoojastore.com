@@ -23,6 +23,7 @@ import {
   MessageSquare,
   Phone,
   ArrowRight,
+  Plus,
   X,
 } from 'lucide-react';
 import { SpiritualService, servicesData } from '../data/services.ts';
@@ -31,11 +32,17 @@ import { translations, Language } from '../data/translations.ts';
 interface ServicesSectionProps {
   lang: Language;
   onSelectServiceForConsultation: (service: SpiritualService) => void;
+  services?: SpiritualService[];
+  isAdmin?: boolean;
+  onOpenAdminServices?: () => void;
 }
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({
   lang,
   onSelectServiceForConsultation,
+  services,
+  isAdmin,
+  onOpenAdminServices,
 }) => {
   const [selectedTab, setSelectedTab] = useState<'all' | 'tantra' | 'herbal' | 'relationship' | 'astrology'>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -88,7 +95,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
     }
   };
 
-  const filteredServices = servicesData.filter((s) => {
+  const serviceCatalog = services && services.length > 0 ? services : servicesData;
+
+  const filteredServices = serviceCatalog.filter((s) => {
     const matchesTab = selectedTab === 'all' || s.category === selectedTab;
     const matchesSearch =
       searchQuery.trim() === '' ||
@@ -115,6 +124,24 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           <p className="mt-3 text-sm sm:text-base text-amber-200/80 leading-relaxed">
             {t.services.subtitle}
           </p>
+
+          {onOpenAdminServices && (
+            <div className="mt-4 flex justify-center">
+              <button
+                type="button"
+                onClick={onOpenAdminServices}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-amber-600/60 bg-amber-950/70 text-xs font-semibold text-amber-300 hover:text-white hover:bg-amber-900/60 transition-all shadow-sm cursor-pointer"
+                title="Admin: Add or Delete Spiritual Services"
+              >
+                <Plus className="w-3.5 h-3.5 text-amber-400" />
+                <span>
+                  {lang === 'te'
+                    ? '+ సేవలను జోడించండి & తొలగించండి (Admin Service Settings)'
+                    : '+ Manage & Add / Remove Services (Admin)'}
+                </span>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Search Bar & Category Filter Bar */}

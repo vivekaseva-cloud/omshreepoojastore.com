@@ -142,16 +142,27 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
                   <option value="వశీకరణ / Vashikaran">వశీకరణ సిద్ధ ప్రక్రియ (Vashikaran)</option>
                   <option value="భార్యాభర్తల సమస్యలు / Marital Disputes">భార్యాభర్తల సమస్యలు & విడాకుల నివారణ (Husband-Wife)</option>
                   <option value="ప్రేమికుల సమస్యలు / Love Problems">ప్రేమికుల మధ్య సమస్యలు (Love & Relationship)</option>
-                  <option value="స్వయం సంపర్కుల ప్రేమ / LGBTQ+">స్వయం సంపర్కుల ప్రేమ సమస్యలు (LGBTQ+ Relationships)</option>
-                  <option value="హిజ్రాల రక్షణ / Transgender Justice">హిజ్రాలను మోసం చేసే వారిని దారికి తేవడం</option>
-                  <option value="మరుగు మందు / Marugu Mandu">అసలైన మరుగు మందు కావాలి</option>
-                  <option value="మర్ల మందు / Marla Mandu Antidote">మర్ల మందు తీయడం (విరుగుడు)</option>
-                  <option value="చేతబడి నివారణ / Black Magic Removal">చేతబడి నిర్మూలన, నిర్ధారణ & రక్షణ</option>
-                  <option value="పురుషుల ఆరోగ్యం / Men Vitality">పురుషుల సమస్యలు (అంగస్తంభన, శీఘ్రస్కలనం)</option>
-                  <option value="ఆర్ధిక ఇబ్బందులు / Financial Crisis">ఆర్ధిక ఇబ్బందులు & అప్పుల బాధలు</option>
+                  <option value="స్వయం సంపర్కుల ప్రేమ / LGBTQ+">స్వయం సంపర్కుల ప్రేమ (ఆడవారి మధ్య, మగవారి మధ్య - LGBTQ+)</option>
+                  <option value="హిజ్రాల రక్షణ / Transgender Justice">హిజ్రాలను ప్రేమ పేరుతో మోసం చేసే మగవారిని దారికి తేవడం</option>
+                  <option value="మధ్య సమస్యలు & ఆర్థిక ఇబ్బందులు / Financial">మధ్య సమస్యలు & ఆర్థిక ఇబ్బందులు (అప్పుల నివారణ)</option>
+                  <option value="బాస్ & తోటి ఉద్యోగుల ఇబ్బందులు / Workplace">పనిచేసే దగ్గర బాస్ తో లేదా తోటి ఎంప్లాయ్ లతో ఇబ్బంది</option>
+                  <option value="చెడు అలవాట్లు / Deaddiction">చెడు అలవాట్లు మానిపించబడును (జూదం, బెట్టింగ్, వ్యసనాలు)</option>
+                  <option value="మద్యపాన వ్యసనం / Alcohol Family Reform">మందుకు బానిస అయ్యి ఫ్యామిలీని పట్టించుకోని వారిని దారికి తేవడం</option>
+                  <option value="భర్త పరాయి వ్యామోహం / Husband Affair">పరాయి ఆడవారి వ్యామోహంలో సొంత ఫ్యామిలీని పట్టించుకోని భర్తను దారికి తేవడం</option>
+                  <option value="భార్య పరాయి వ్యామోహం / Wife Affair">పరాయి పురుషుడి వ్యామోహంలో భర్తను పిల్లలను పట్టించుకోని భార్యను దారికి తేవడం</option>
                   <option value="కోర్టు కేసులు / Court Cases">కోర్టు కేసులు & భూ తగాదాలు</option>
-                  <option value="లక్ష్మీదేవి నిలబడకపోవడం / Wealth Drain">లక్ష్మీదేవి ఇంట్లో నిలబడకపోవడం</option>
-                  <option value="సిద్ధ యంత్రాలు / Energized Yantras">శక్తిమంతమైన సిద్ధ యంత్రాలు & పూజా ద్రవ్యాలు</option>
+                  <option value="మరుగు మందు / Marugu Mandu Given">అసలైన నాటు మరుగు మందు ఇవ్వబడును</option>
+                  <option value="మర్ల మందు / Marla Mandu Antidote">మర్ల మందు తీయబడును (మరుగు మందు విరుగుడు)</option>
+                  <option value="చేతబడి నిర్మూలన / Black Magic Removal">చేతబడి నిర్మూలన మరియు నిర్ధారణ</option>
+                  <option value="సిద్ధ యంత్రములు / Sacred Yantras">శక్తిమంతమైన సిద్ధ యంత్రములు & శీఘ్ర పరిష్కారం</option>
+                  <option value="పెళ్లి కాకపోవడం / Delayed Marriage">పెళ్లి కాకపోవడం, కుజదోషం & వివాహ ఆటంకాలు</option>
+                  <option value="లక్ష్మీదేవి నిలబడకపోవడం / Wealth Drain">లక్ష్మీదేవి ఇంట్లో నిలబడకపోవడం (ధన సంపద లోపం)</option>
+                  <option value="అంగస్తంభన సమస్య / Erectile Dysfunction">అంగస్తంభన సమస్య (పురుషుల నాటు వైద్యం)</option>
+                  <option value="శీఘ్రస్కలనం సమస్య / Premature Ejaculation">శీఘ్రస్కలనం సమస్య & శారీరక బలహీనత</option>
+                  <option value="నరదిష్టి & శత్రు పీడ / Nazar Drishti">నరదిష్టి, నరఘోష & శత్రు పీడ నివారణ</option>
+                  <option value="స్త్రీలలో వక్షోజాల పరిమాణం పెరుగుదల / Breast Enhancement">స్త్రీలలో వక్షోజాల పరిమాణం పెరుగుదలకు సహజ సిద్ధమైన పరిహారాలు</option>
+                  <option value="ఆనందకరమైన దాంపత్యం & ఆరోగ్య సమస్యలు / Marital Bliss">దాంపత్యం ఆనందంగా ఉండటానికి అన్ని ఆరోగ్య సమస్యలకు పరిష్కారం</option>
+                  <option value="పూజా ద్రవ్యాలు & రుద్రాక్షలు / Sacred Samagri">అసలైన పూజా ద్రవ్యాలు, నేపాల్ రుద్రాక్షలు & పవిత్ర వస్తువులు</option>
                 </select>
               </div>
 

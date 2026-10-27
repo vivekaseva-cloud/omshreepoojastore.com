@@ -57,7 +57,14 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenAdmin }) => {
               </div>
               <div className="flex items-center gap-2">
                 <Youtube className="w-4 h-4 text-red-500 shrink-0" />
-                <span>Sadguru Natu Vaidyam Channel</span>
+                <a
+                  href="https://www.youtube.com/channel/UCrcgWWGv5nrSeP2y79nt3GQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-amber-200 hover:text-red-400"
+                >
+                  Sadguru Natu Vaidyam Channel
+                </a>
               </div>
               <div className="flex items-start gap-2 mt-1">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
@@ -134,7 +141,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenAdmin }) => {
             © {new Date().getFullYear()} Sadguru Natu Vaidyam - Srinivas Maharaj. All rights reserved.
           </div>
           <div>
-            Helpline: <a href="tel:7093586539" className="text-amber-300 font-mono">7093586539</a> · BigRock Ready
+            Helpline: <a href="tel:7093586539" className="text-amber-300 font-mono">7093586539</a> · 100% Confidential
           </div>
         </div>
       </div>

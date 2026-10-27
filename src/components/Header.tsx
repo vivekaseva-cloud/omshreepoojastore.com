@@ -49,9 +49,59 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-8">
         {/* Zone 1: Brand Wordmark */}
         <a href="#" className="flex items-center gap-2.5 whitespace-nowrap shrink-0 group">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-amber-700 p-0.5 shadow-md shadow-amber-900/30">
-            <div className="w-full h-full rounded-full bg-[#150d08] flex items-center justify-center text-amber-400 font-bold text-lg">
-              <Sparkles className="w-5 h-5 text-amber-400" />
+          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#f3d27a] via-[#d4a338] to-[#8c5e14] p-0.5 shadow-lg shadow-black/60 shrink-0">
+            <div className="w-full h-full rounded-full bg-[#2b5319] flex items-center justify-center overflow-hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" className="w-full h-full">
+                <defs>
+                  <radialGradient id="snvInnerGlowReact" cx="50%" cy="48%" r="48%">
+                    <stop offset="0%" stopColor="#fae29c" />
+                    <stop offset="65%" stopColor="#e2af52" />
+                    <stop offset="100%" stopColor="#b5771e" />
+                  </radialGradient>
+                  <linearGradient id="snvGreenRingReact" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#3d6c27" />
+                    <stop offset="50%" stopColor="#2c521b" />
+                    <stop offset="100%" stopColor="#1e3b11" />
+                  </linearGradient>
+                  <linearGradient id="snvStoneReact" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#6e5d4b" />
+                    <stop offset="45%" stopColor="#afa08c" />
+                    <stop offset="100%" stopColor="#4e4031" />
+                  </linearGradient>
+                  <path id="snvTopTextArcReact" d="M 23,100 A 77,77 0 1,1 177,100" />
+                  <path id="snvBotTextArcReact" d="M 178,104 A 78,78 0 0,1 22,104" />
+                </defs>
+                <circle cx="100" cy="100" r="98" fill="#c9932b" stroke="#69460b" strokeWidth="2" />
+                <circle cx="100" cy="100" r="93" fill="url(#snvGreenRingReact)" stroke="#e7be5a" strokeWidth="2.5" />
+                <circle cx="100" cy="100" r="64" fill="url(#snvInnerGlowReact)" stroke="#8c5b12" strokeWidth="2.5" />
+                <circle cx="100" cy="100" r="61" fill="none" stroke="#f7d883" strokeWidth="1" strokeDasharray="3,2" />
+                <path d="M128,96 C128,84 132,78 134,74 C124,74 120,66 127,60 C132,54 146,54 152,61 C156,66 154,74 144,75 C146,80 149,88 153,96 Z" fill="#a66b1c" opacity="0.45" />
+                <text fill="#fbe29b" stroke="#182e0d" strokeWidth="0.8" fontFamily="Georgia, serif" fontSize="15.5" fontWeight="bold" letterSpacing="1.2">
+                  <textPath href="#snvTopTextArcReact" startOffset="50%" textAnchor="middle">SADGURU NAATU VAIDYA</textPath>
+                </text>
+                <text fill="#f7da86" fontFamily="sans-serif" fontSize="8.7" fontWeight="bold" letterSpacing="0.9">
+                  <textPath href="#snvBotTextArcReact" startOffset="50%" textAnchor="middle">TRADITIONAL | NATURAL | AYURVEDA</textPath>
+                </text>
+                <g stroke="#1b3d0e" strokeWidth="1">
+                  <path d="M92,88 C82,74 78,58 83,46 C92,55 96,70 94,88 Z" fill="#3a7d22" />
+                  <path d="M97,86 C94,68 98,52 106,44 C111,56 108,72 101,86 Z" fill="#52992e" />
+                  <path d="M86,90 C72,82 63,72 62,62 C74,64 83,74 88,88 Z" fill="#468c28" />
+                  <path d="M104,88 C112,74 122,66 131,64 C128,76 118,84 106,90 Z" fill="#36731f" />
+                  <path d="M68,118 C54,110 46,98 48,86 C58,92 66,104 70,116 Z" fill="#498f2a" />
+                  <path d="M132,118 C146,110 154,98 152,86 C142,92 134,104 130,116 Z" fill="#3d7d22" />
+                </g>
+                <path d="M106,92 L124,62 C127,57 135,61 133,67 L116,94 Z" fill="url(#snvStoneReact)" stroke="#3b2e20" strokeWidth="1.5" />
+                <path d="M68,90 L132,90 C134,108 124,122 100,122 C76,122 66,108 68,90 Z" fill="url(#snvStoneReact)" stroke="#3b2e20" strokeWidth="1.8" />
+                <ellipse cx="100" cy="90" rx="33" ry="6.5" fill="#8f7e6a" stroke="#3b2e20" strokeWidth="1.6" />
+                <ellipse cx="100" cy="90" rx="27" ry="4" fill="#3d3022" />
+                <circle cx="75" cy="126" r="7.5" fill="#8ec235" stroke="#2f5210" strokeWidth="1.2" />
+                <circle cx="85" cy="122" r="6.5" fill="#a4d448" stroke="#2f5210" strokeWidth="1.2" />
+                <path d="M85,126 L115,126 C116,136 110,143 100,143 C90,143 84,136 85,126 Z" fill="url(#snvStoneReact)" stroke="#3b2e20" strokeWidth="1.4" />
+                <g fill="#d68347" stroke="#59290c" strokeWidth="1.5" strokeLinejoin="round">
+                  <path d="M56,112 C52,124 58,138 72,147 L96,156 L98,146 C84,140 72,132 65,115 C62,110 58,109 56,112 Z" />
+                  <path d="M144,112 C148,124 142,138 128,147 L104,156 L102,146 C116,140 128,132 135,115 C138,110 142,109 144,112 Z" />
+                </g>
+              </svg>
             </div>
           </div>
           <div className="flex flex-col">

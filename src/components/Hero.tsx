@@ -52,27 +52,35 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenConsultation }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-amber-300/90 pt-2">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>వశీకరణ & దాంపత్య శాంతి</span>
+                <span>వశీకరణ & దాంపత్య ఐక్యమత్యం</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>అసలైన మరుగు మందు & విరుగుడు</span>
+                <span>అసలైన నాటు మరుగు మందు & విరుగుడు</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>చేతబడి నివారణ & శాశ్వత రక్షణ</span>
+                <span>చేతబడి నిర్మూలన, నిర్ధారణ & శాశ్వత రక్షణ</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>పురుషుల అంగస్తంభన, శీఘ్రస్కలనం నివారణ</span>
+                <span>పురుషుల అంగస్తంభన, శీఘ్రస్కలనం నాటు చికిత్స</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>స్వయం సంపర్కుల (LGBTQ+) సమస్యలు</span>
+                <span>మద్యపానం & చెడు అలవాట్ల నుండి విముక్తి</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>ఆర్ధిక ఇబ్బందులు & కోర్టు కేసులు</span>
+                <span>పరాయి వ్యామోహాల నుండి భర్త/భార్యను దారికి తేవడం</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>స్త్రీలలో వక్షోజాల పెరుగుదలకు సహజ సిద్ధ మూలికలు</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>ఆనంద దాంపత్యం & సమగ్ర ఆరోగ్య పరిష్కారాలు</span>
               </div>
             </div>
 
